@@ -4,6 +4,7 @@ import {
   useGetMealByCategoryQuery,
 } from "../../states/api/mealApi";
 import MealCard from "../common/MealCard";
+import { useFeaturedMeals } from "../../hooks/useFeaturedMeals";
 
 export default function BrowseByCategorySection() {
   const [selectedCategory, setSelectedCategory] = useState<string>("");
@@ -12,16 +13,22 @@ export default function BrowseByCategorySection() {
   const mealCategories = data?.meals;
 
   // Fetch meals for the selected category
-  const { data: mealsData, isLoading } = useGetMealByCategoryQuery(
-    selectedCategory,
-    {
+  const { data: mealsData, isLoading: isCategoryLoading } =
+    useGetMealByCategoryQuery(selectedCategory, {
       skip: !selectedCategory,
-    }
-  );
+    });
+
+  // Fetch featured meals (8 random meals)
+  const { meals: featuredMeals, isLoading: isFeaturedLoading } =
+    useFeaturedMeals(8);
 
   const handleCategoryClick = (category: string) => {
     setSelectedCategory(category);
   };
+
+  // Decide which meals to show
+  const showMeals = selectedCategory ? mealsData?.meals : featuredMeals;
+  const loading = selectedCategory ? isCategoryLoading : isFeaturedLoading;
 
   return (
     <div className="py-6 max-w-7xl mx-auto">
@@ -39,36 +46,36 @@ export default function BrowseByCategorySection() {
                   ? "bg-orange-500 text-white shadow-lg"
                   : "bg-white text-gray-700 hover:bg-orange-100 border border-gray-200"
               } ${
-                isLoading ? "opacity-50 cursor-not-allowed" : "hover:shadow-md"
+                loading ? "opacity-50 cursor-not-allowed" : "hover:shadow-md"
               }`}
-              disabled={isLoading}
+              disabled={loading}
             >
               {category.strCategory}
             </button>
           ))}
         </div>
 
-        {/* Display meals for the selected category */}
-        {selectedCategory && (
-          <div className="mt-6">
-            <h4 className="text-xl font-semibold mb-2">
-              Meals in {selectedCategory}
-            </h4>
-            {isLoading && <div>Loading meals...</div>}
-            {!isLoading && mealsData?.meals && (
-              <ul className="grid grid-cols-1 md:grid-cols-4 gap-4">
-                {mealsData.meals.slice(0, 8).map((meal) => (
-                  <li key={meal.idMeal} className="flex">
-                    <MealCard
-                      mealId={meal.idMeal}
-                      className="flex-1 h-full flex flex-col"
-                    />
-                  </li>
-                ))}
-              </ul>
-            )}
-          </div>
-        )}
+        {/* Display meals for the selected category or featured */}
+        <div className="mt-6">
+          <h4 className="text-xl font-semibold mb-2">
+            {selectedCategory
+              ? `Meals in ${selectedCategory}`
+              : "Featured Meals"}
+          </h4>
+          {loading && <div>Loading meals...</div>}
+          {!loading && showMeals && (
+            <ul className="grid grid-cols-1 md:grid-cols-4 gap-4">
+              {showMeals.slice(0, 8).map((meal) => (
+                <li key={meal.idMeal} className="flex">
+                  <MealCard
+                    mealId={meal.idMeal}
+                    className="flex-1 h-full flex flex-col"
+                  />
+                </li>
+              ))}
+            </ul>
+          )}
+        </div>
       </div>
     </div>
   );
