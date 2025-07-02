@@ -46,7 +46,7 @@ export default function HeroSection() {
             </div>
             <div className="w-full md:w-1/2 flex items-center justify-center">
               <img
-                src="https://www.themealdb.com/images/media/meals/oe8rg51699014028.jpg"
+                src={randomMeal?.strMealThumb}
                 alt="Random Image"
                 className="w-full md:h-96 object-cover rounded-2xl"
               />
