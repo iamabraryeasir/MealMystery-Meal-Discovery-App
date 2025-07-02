@@ -21,7 +21,20 @@ export const mealsApiSlice = createApi({
     getMealById: builder.query<MealsResponse, string>({
       query: (id) => `/lookup.php?i=${id}`,
     }),
+    getAllCategories: builder.query<{ meals: { strCategory: string }[] }, void>(
+      {
+        query: () => `/list.php?c=list`,
+      }
+    ),
+    getMealByCategory: builder.query<MealsResponse, string>({
+      query: (category) => `/filter.php?c=${category}`,
+    }),
   }),
 });
 
-export const { useGetRandomMealQuery, useGetMealByIdQuery } = mealsApiSlice;
+export const {
+  useGetRandomMealQuery,
+  useGetMealByIdQuery,
+  useGetMealByCategoryQuery,
+  useGetAllCategoriesQuery,
+} = mealsApiSlice;

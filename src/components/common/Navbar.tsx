@@ -1,6 +1,5 @@
-import { Bookmark, ChefHat } from "lucide-react";
+import { ArrowRight, Bookmark, ChefHat } from "lucide-react";
 import { Link } from "react-router";
-import SearchBox from "../others/SearchBox";
 
 export default function Navbar() {
   return (
@@ -13,22 +12,27 @@ export default function Navbar() {
             MealMystery
           </Link>
 
-          <Link
-            to="/bookmarks"
-            className="flex items-center gap-1 text-lg px-3 md:px-5 py-3 md:py-2 bg-white/20 hover:bg-white/30 rounded-full cursor-pointer relative"
-          >
-            <Bookmark />
-            <span className="hidden md:block">Bookmarks</span>
-            {/* {getBookmarkCount() > 0 && (
+          <div className="flex items-center gap-5">
+            <Link to="/meals" className="text-lg font-medium">
+              <div className="md:hidden">
+                <ArrowRight />
+              </div>
+              <p className="hidden md:block">Browse Meals</p>
+            </Link>
+            <Link
+              to="/bookmarks"
+              className="flex items-center gap-1 text-lg px-3 md:px-5 py-3 md:py-2 bg-white/20 hover:bg-white/30 rounded-full cursor-pointer relative"
+            >
+              <Bookmark />
+              <span className="hidden md:block">Bookmarks</span>
+              {/* {getBookmarkCount() > 0 && (
               <span className="absolute -top-2 -right-2 bg-red-500 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center">
-                {getBookmarkCount()}
+              {getBookmarkCount()}
               </span>
-            )} */}
-          </Link>
+              )} */}
+            </Link>
+          </div>
         </div>
-
-        {/* Search Bar */}
-        <SearchBox />
       </div>
     </nav>
   );
