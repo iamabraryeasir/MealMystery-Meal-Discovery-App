@@ -1,69 +1,69 @@
-# React + TypeScript + Vite
+# MealMystery 🍽️
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+MealMystery is a modern, responsive web application for discovering, searching, and bookmarking delicious meals from around the world. Browse by category, search by name, view detailed recipes, and save your favorites—all with a beautiful, user-friendly interface.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 🚀 Setup Instructions
 
-## Expanding the ESLint configuration
+1. **Clone the repository:**
+    ```sh
+    git clone https://github.com/iamabraryeasir/MealMystery-Meal-Discovery-App
+    cd MealMystery-Meal-Discovery-App
+    ```
+2. **Install dependencies:**
+    ```sh
+    npm install
+    ```
+3. **Start the development server:**
+    ```sh
+    npm run dev
+    ```
+4. **Open in your browser:**
+   Visit [http://localhost:5173](http://localhost:5173) (or the port shown in your terminal).
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+---
 
-```js
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+## ✨ Key Features
 
-      // Remove tseslint.configs.recommended and replace with this
-      ...tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      ...tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      ...tseslint.configs.stylisticTypeChecked,
+-   **Browse Meals by Category:**
+    -   Explore meals grouped by cuisine or type.
+-   **Featured Meals:**
+    -   See 8 random meals on the homepage for inspiration.
+-   **Search Meals:**
+    -   Instantly search for meals by name with real-time results.
+-   **Meal Details:**
+    -   View detailed recipes, ingredients, instructions, and video tutorials.
+-   **Bookmark Meals:**
+    -   Save your favorite meals to revisit later. Bookmarks are persistent (saved in your browser).
+-   **Responsive Design:**
+    -   Fully optimized for mobile, tablet, and desktop.
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+---
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+## 🛠️ Technologies Used
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+-   **React** (with TypeScript)
+-   **Redux Toolkit** (with RTK Query)
+-   **Tailwind CSS** (for modern, responsive UI)
+-   **Vite** (for fast development and build)
+-   **TheMealDB API** (for meal data)
+-   **Lucide Icons** (for beautiful icons)
 
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+---
+
+## 📂 Project Structure
+
+-   `src/components/` — UI components (MealCard, Navbar, SearchBox, etc.)
+-   `src/pages/` — Main pages (Home, Browse, Meal Details, Bookmarks)
+-   `src/hooks/` — Custom React hooks
+-   `src/states/` — Redux slices, store, and API logic
+-   `src/types/` — TypeScript types
+
+---
+
+## 👨‍💻 Developer
+
+-   **Name:** Abrar Yeasir
+-   **GitHub:** [iamabraryeasir](https://github.com/iamabraryeasir)
+-   **Email:** iamabraryeasir@gmail.com

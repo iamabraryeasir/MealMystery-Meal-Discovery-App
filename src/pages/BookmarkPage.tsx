@@ -25,7 +25,7 @@ export default function BookmarkPage() {
               />
               <button
                 onClick={() => dispatch(removeBookmark(mealId))}
-                className="absolute top-2 right-2 z-10 p-2 rounded-full bg-white/80 hover:bg-red-100 text-red-500 shadow transition-all opacity-0 group-hover:opacity-100"
+                className="absolute top-2 right-2 z-10 p-2 rounded-full bg-white/80 hover:bg-red-100 text-red-500 shadow transition-all"
                 aria-label="Remove from bookmarks"
               >
                 <svg
