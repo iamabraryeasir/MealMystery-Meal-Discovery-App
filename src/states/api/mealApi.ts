@@ -29,6 +29,9 @@ export const mealsApiSlice = createApi({
     getMealByCategory: builder.query<MealsResponse, string>({
       query: (category) => `/filter.php?c=${category}`,
     }),
+    searchMealsByName: builder.query<MealsResponse, string>({
+      query: (name) => `/search.php?s=${name}`,
+    }),
   }),
 });
 
@@ -37,4 +40,5 @@ export const {
   useGetMealByIdQuery,
   useGetMealByCategoryQuery,
   useGetAllCategoriesQuery,
+  useSearchMealsByNameQuery,
 } = mealsApiSlice;
