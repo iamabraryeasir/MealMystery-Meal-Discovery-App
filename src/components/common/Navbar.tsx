@@ -1,4 +1,4 @@
-import { ArrowRight, Bookmark, ChefHat } from "lucide-react";
+import { Bookmark, ChefHat, Search } from "lucide-react";
 import { Link } from "react-router";
 import { useAppSelector } from "../../states/hooks";
 
@@ -20,7 +20,7 @@ export default function Navbar() {
           <div className="flex items-center gap-5">
             <Link to="/meals" className="text-lg font-medium">
               <div className="md:hidden">
-                <ArrowRight />
+                <Search />
               </div>
               <p className="hidden md:block">Browse Meals</p>
             </Link>
