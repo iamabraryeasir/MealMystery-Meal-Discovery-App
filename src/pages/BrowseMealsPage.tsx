@@ -22,7 +22,7 @@ export default function BrowseMealsPage() {
   };
 
   return (
-    <div className="max-w-7xl mx-auto px-5 md:px-0 py-6">
+    <div className="max-w-7xl mx-auto px-5 lg:px-0 py-6">
       <SearchBox value={search} onChange={handleSearch} />
       <div className="mt-6">
         {loading && (
@@ -31,7 +31,7 @@ export default function BrowseMealsPage() {
           </div>
         )}
         {!loading && showMeals && showMeals.length > 0 && (
-          <ul className="grid grid-cols-1 md:grid-cols-4 gap-4">
+          <ul className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
             {showMeals.slice(0, 8).map((meal) => (
               <li key={meal.idMeal} className="flex">
                 <MealCard

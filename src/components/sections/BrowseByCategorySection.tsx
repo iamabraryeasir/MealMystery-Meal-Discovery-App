@@ -33,7 +33,7 @@ export default function BrowseByCategorySection() {
 
   return (
     <div className="py-6 max-w-7xl mx-auto">
-      <div className="px-5 md:px-0">
+      <div className="px-5 lg:px-0">
         <h3 className="text-2xl font-semibold text-gray-800 mb-4">
           Browse by Category
         </h3>

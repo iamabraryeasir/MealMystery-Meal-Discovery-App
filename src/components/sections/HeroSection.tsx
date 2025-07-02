@@ -12,7 +12,7 @@ export default function HeroSection() {
   };
 
   return (
-    <section className="py-5 md:py-8 px-5 md:px-0">
+    <section className="py-5 md:py-8 px-5 lg:px-0">
       <div className="max-w-7xl mx-auto bg-gradient-to-r from-orange-500 to-amber-500 rounded-3xl p-6 md:p-8 text-white flex flex-col-reverse md:flex-row items-center justify-center gap-5 md:gap-10">
         {isLoading ? (
           <div className="w-full md:h-96 flex items-center justify-center">
