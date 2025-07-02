@@ -5,6 +5,7 @@ import {
 } from "../../states/api/mealApi";
 import MealCard from "../common/MealCard";
 import { useFeaturedMeals } from "../../hooks/useFeaturedMeals";
+import { LoaderCircle } from "lucide-react";
 
 export default function BrowseByCategorySection() {
   const [selectedCategory, setSelectedCategory] = useState<string>("");
@@ -62,7 +63,11 @@ export default function BrowseByCategorySection() {
               ? `Meals in ${selectedCategory}`
               : "Featured Meals"}
           </h4>
-          {loading && <div>Loading meals...</div>}
+          {loading && (
+            <div className="w-full h-[60vh] flex items-center justify-center">
+              <LoaderCircle className="animate-spin w-10 h-10 text-orange-500" />
+            </div>
+          )}
           {!loading && showMeals && (
             <ul className="grid grid-cols-1 md:grid-cols-4 gap-4">
               {showMeals.slice(0, 8).map((meal) => (
