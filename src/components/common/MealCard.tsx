@@ -1,4 +1,4 @@
-import { Clock, LoaderCircle, MapPin } from "lucide-react";
+import { LoaderCircle, MapPin, Salad } from "lucide-react";
 import { Link } from "react-router";
 
 import type { Meal } from "../../types/meal.type";
@@ -60,7 +60,7 @@ export default function MealCard({
               <span>{meal?.strArea}</span>
             </div>
             <div className="flex items-center gap-1">
-              <Clock className="h-4 w-4 text-orange-500" />
+              <Salad className="h-4 w-4 text-orange-500" />
               <span>{meal?.strCategory}</span>
             </div>
           </div>

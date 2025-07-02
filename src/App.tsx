@@ -4,6 +4,7 @@ import MealDetailPage from "./pages/MealDetailPage";
 import Navbar from "./components/common/Navbar";
 import BrowseMealsPage from "./pages/BrowseMealsPage";
 import BookmarkPage from "./pages/BookmarkPage";
+import Footer from "./components/common/Footer";
 
 export default function App() {
   return (
@@ -15,6 +16,7 @@ export default function App() {
         <Route path="/meals/:mealId" element={<MealDetailPage />} />
         <Route path="/bookmarks" element={<BookmarkPage />} />
       </Routes>
+      <Footer />
     </>
   );
 }
