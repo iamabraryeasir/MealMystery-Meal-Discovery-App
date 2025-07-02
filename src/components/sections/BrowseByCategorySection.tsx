@@ -3,9 +3,9 @@ import {
   useGetAllCategoriesQuery,
   useGetMealByCategoryQuery,
 } from "../../states/api/mealApi";
-import MealCard from "../common/MealCard";
 import { useFeaturedMeals } from "../../hooks/useFeaturedMeals";
 import { LoaderCircle } from "lucide-react";
+import MealCarousel from "../others/MealCarousel";
 
 export default function BrowseByCategorySection() {
   const [selectedCategory, setSelectedCategory] = useState<string>("");
@@ -58,27 +58,22 @@ export default function BrowseByCategorySection() {
 
         {/* Display meals for the selected category or featured */}
         <div className="mt-6">
-          <h4 className="text-xl font-semibold mb-2">
-            {selectedCategory
-              ? `Meals in ${selectedCategory}`
-              : "Featured Meals"}
-          </h4>
-          {loading && (
+          {loading ? (
             <div className="w-full h-[60vh] flex items-center justify-center">
               <LoaderCircle className="animate-spin w-10 h-10 text-orange-500" />
             </div>
-          )}
-          {!loading && showMeals && (
-            <ul className="grid grid-cols-1 md:grid-cols-4 gap-4">
-              {showMeals.slice(0, 8).map((meal) => (
-                <li key={meal.idMeal} className="flex">
-                  <MealCard
-                    mealId={meal.idMeal}
-                    className="flex-1 h-full flex flex-col"
-                  />
-                </li>
-              ))}
-            </ul>
+          ) : selectedCategory ? (
+            showMeals &&
+            showMeals.length > 0 && (
+              <MealCarousel
+                meals={showMeals}
+                title={`Meals in ${selectedCategory}`}
+              />
+            )
+          ) : (
+            featuredMeals.length > 0 && (
+              <MealCarousel meals={featuredMeals} title="Featured Meals" />
+            )
           )}
         </div>
       </div>
