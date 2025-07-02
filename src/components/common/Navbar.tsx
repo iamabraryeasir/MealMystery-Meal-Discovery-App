@@ -1,7 +1,12 @@
 import { ArrowRight, Bookmark, ChefHat } from "lucide-react";
 import { Link } from "react-router";
+import { useAppSelector } from "../../states/hooks";
 
 export default function Navbar() {
+  const bookmarkCount = useAppSelector(
+    (state) => state.bookmark.mealIds.length
+  );
+
   return (
     <nav className="bg-gradient-to-r from-orange-500 to-amber-500 text-white">
       <div className="max-w-7xl mx-auto">
@@ -25,11 +30,11 @@ export default function Navbar() {
             >
               <Bookmark />
               <span className="hidden md:block">Bookmarks</span>
-              {/* {getBookmarkCount() > 0 && (
-              <span className="absolute -top-2 -right-2 bg-red-500 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center">
-              {getBookmarkCount()}
-              </span>
-              )} */}
+              {bookmarkCount > 0 && (
+                <span className="absolute -top-2 -right-2 bg-red-500 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center">
+                  {bookmarkCount}
+                </span>
+              )}
             </Link>
           </div>
         </div>
