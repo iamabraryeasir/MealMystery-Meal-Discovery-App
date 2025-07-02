@@ -28,9 +28,9 @@ export default function MealCard({
   if (isLoading) {
     return (
       <div
-        className={`bg-white rounded-2xl shadow-lg overflow-hidden ${className} `}
+        className={`bg-white rounded-2xl shadow-lg overflow-hidden flex flex-col h-full ${className}`}
       >
-        <div className="h-[520px] flex items-center justify-center">
+        <div className="aspect-[4/3] w-full bg-gray-100 flex items-center justify-center">
           <LoaderCircle className="animate-spin w-8 h-8 text-orange-500" />
         </div>
       </div>
@@ -40,22 +40,20 @@ export default function MealCard({
   return (
     <Link to={`/meals/${meal?.idMeal}`}>
       <div
-        className={`bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-2xl transform hover:-translate-y-2 transition-all duration-300 cursor-pointer group ${className}`}
+        className={`bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-2xl transform hover:-translate-y-2 transition-all duration-300 cursor-pointer group flex flex-col h-full ${className}`}
       >
-        <div className="relative overflow-hidden">
+        <div className="relative overflow-hidden aspect-[4/3] w-full rounded-t-2xl bg-gray-100">
           <img
             src={meal?.strMealThumb}
             alt={meal?.strMeal}
-            className="w-full h-48 object-cover group-hover:scale-110 transition-transform duration-300"
+            className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
           />
           <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
         </div>
-
-        <div className="p-6">
+        <div className="p-6 flex flex-col flex-1">
           <h3 className="text-xl font-bold text-gray-800 mb-2 line-clamp-2">
             {meal?.strMeal}
           </h3>
-
           <div className="flex items-center gap-4 mb-3 text-sm text-gray-600">
             <div className="flex items-center gap-1">
               <MapPin className="h-4 w-4 text-orange-500" />

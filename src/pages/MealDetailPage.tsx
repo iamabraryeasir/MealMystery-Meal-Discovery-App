@@ -1,12 +1,27 @@
 import { Link, useParams } from "react-router";
 import { useGetMealByIdQuery } from "../states/api/mealApi";
 import { ArrowLeft, Bookmark, ChefHat, LoaderCircle } from "lucide-react";
+import { useAppDispatch, useAppSelector } from "../states/hooks";
+import { addBookmark, removeBookmark } from "../states/slices/bookmarkSlice";
 
 export default function MealDetailPage() {
   const { mealId } = useParams<{ mealId: string }>();
+  const dispatch = useAppDispatch();
+  const bookmarkedMealIds = useAppSelector((state) => state.bookmark.mealIds);
 
   const { data, isLoading } = useGetMealByIdQuery(mealId!);
   const selectedMeal = data?.meals === null ? undefined : data?.meals?.[0];
+
+  // Bookmark logic
+  const isBookmarked = bookmarkedMealIds.includes(mealId!);
+  const handleBookmark = () => {
+    if (!mealId) return;
+    if (isBookmarked) {
+      dispatch(removeBookmark(mealId));
+    } else {
+      dispatch(addBookmark(mealId));
+    }
+  };
 
   // Split instructions into steps
   const getInstructions = () => {
@@ -102,14 +117,17 @@ export default function MealDetailPage() {
             />
             <div className="absolute top-4 right-4 flex gap-2">
               <button
-                // onClick={handleBookmark}
-                className={`p-3 rounded-full transition-all duration-300 bg-orange-500 text-white`}
+                onClick={handleBookmark}
+                className={`p-3 rounded-full transition-all duration-300 ${
+                  isBookmarked ? "bg-orange-600" : "bg-orange-500"
+                } text-white`}
+                aria-label={
+                  isBookmarked ? "Remove from bookmarks" : "Add to bookmarks"
+                }
               >
                 <Bookmark
-                  className={`w-5 h-5 ${
-                    // isBookmarked(selectedMeal.strMeal) ? "fill-current" : ""
-                    ""
-                  }`}
+                  className={`w-5 h-5 ${isBookmarked ? "fill-current" : ""}`}
+                  fill={isBookmarked ? "currentColor" : "none"}
                 />
               </button>
             </div>
