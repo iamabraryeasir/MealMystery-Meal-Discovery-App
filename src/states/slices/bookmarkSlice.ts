@@ -26,13 +26,8 @@ const bookmarkSlice = createSlice({
       state.mealIds = state.mealIds.filter((id) => id !== action.payload);
       localStorage.setItem("bookmarkedMealIds", JSON.stringify(state.mealIds));
     },
-    setBookmarks: (state, action: PayloadAction<string[]>) => {
-      state.mealIds = action.payload;
-      localStorage.setItem("bookmarkedMealIds", JSON.stringify(state.mealIds));
-    },
   },
 });
 
-export const { addBookmark, removeBookmark, setBookmarks } =
-  bookmarkSlice.actions;
+export const { addBookmark, removeBookmark } = bookmarkSlice.actions;
 export default bookmarkSlice.reducer;
